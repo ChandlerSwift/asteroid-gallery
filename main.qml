@@ -1,3 +1,5 @@
+
+
 /*
  * Copyright (C) 2019 Florent Revest <revestflo@gmail.com>
  *
@@ -14,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 import QtQuick 2.9
 import org.asteroid.controls 1.0
 import Qt.labs.folderlistmodel 2.1
@@ -48,11 +49,13 @@ Application {
         Component {
             id: photoDelegate
             Item {
-                width: app.width; height: app.height
+                width: app.width
+                height: app.height
 
                 Image {
                     source: fileURL
-                    width: app.width; height: app.height
+                    width: app.width
+                    height: app.height
                     fillMode: Image.PreserveAspectFit
                 }
 
@@ -72,7 +75,7 @@ Application {
 
         ListView {
             id: lv
-            anchors.fill:parent
+            anchors.fill: parent
             model: folderModel
             delegate: photoDelegate
             orientation: ListView.Horizontal
@@ -80,19 +83,17 @@ Application {
             highlightRangeMode: ListView.StrictlyEnforceRange
         }
 
-// Currently PageDot is not used because it tends the currently shown indication
-// tends to be displayed off the screen with larger numbers of images.
-// Potentially, we can rework PageDot to display the current dot centered, and
-// move other dots around it.
-//        PageDot {
-//            height: Dims.h(3)
-//            anchors.horizontalCenter: parent.horizontalCenter
-//            anchors.top: parent.top
-//            anchors.topMargin: Dims.h(3)
-//            currentIndex: lv.currentIndex
-//            dotNumber: folderModel.count
-//        }
+        // Currently PageDot is not used because it tends the currently shown indication
+        // tends to be displayed off the screen with larger numbers of images.
+        // Potentially, we can rework PageDot to display the current dot centered, and
+        // move other dots around it.
+        //        PageDot {
+        //            height: Dims.h(3)
+        //            anchors.horizontalCenter: parent.horizontalCenter
+        //            anchors.top: parent.top
+        //            anchors.topMargin: Dims.h(3)
+        //            currentIndex: lv.currentIndex
+        //            dotNumber: folderModel.count
+        //        }
     }
-
-
 }
