@@ -79,7 +79,7 @@ Application {
             model: folderModel
             delegate: photoDelegate
             orientation: ListView.Horizontal
-            snapMode: ListView.SnapOneItem
+            snapMode: ListView.SnapToItem
             highlightRangeMode: ListView.StrictlyEnforceRange
         }
 
