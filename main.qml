@@ -23,8 +23,8 @@ import Qt.labs.folderlistmodel 2.1
 Application {
     id: app
 
-    centerColor: "#31bee7"
-    outerColor: "#052442"
+    centerColor: folderModel.count > 0 ? "#000" : "#31bee7"
+    outerColor:  folderModel.count > 0 ? "#000" : "#052442"
 
     FolderListModel {
         id: folderModel
@@ -36,15 +36,15 @@ Application {
     }
 
     StatusPage {
-        text: "No pictures to display"
+        text: "No photos found"
         icon: "ios-images"
-        visible: false // TODO
+        visible: folderModel.count === 0
     }
 
     Item {
         anchors.fill: parent
 
-        visible: true // TODO
+        visible: folderModel.count > 0
 
         Component {
             id: photoDelegate
