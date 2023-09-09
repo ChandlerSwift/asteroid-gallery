@@ -78,6 +78,11 @@ Application {
 
                 IconButton {
                     iconName: "ios-pencil-circle"
+                    anchors {
+                        horizontalCenter: parent.horizontalCenter
+                        bottom: parent.bottom
+                        bottomMargin: parent.height * 0.05
+                    }
                     onClicked: edit(fileURL)
                 }
             }
@@ -137,14 +142,12 @@ Application {
 
         IconButton {
             id: rotateleftbtn
-            edge: Qt.LeftEdge
             iconName: "ios-rotate-ccw-circle"
             onClicked: imageToEditRotation.angle -= 90
         }
 
         IconButton {
             id: rotaterightbtn
-            edge: Qt.RightEdge
             iconName: "ios-rotate-cw-circle"
             onClicked: imageToEditRotation.angle += 90
         }
