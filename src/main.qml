@@ -29,7 +29,7 @@ Application {
     FolderListModel {
         id: folderModel
         folder: "file:///home/ceres/Pictures"
-        nameFilters: ["*.jpg"]
+        nameFilters: ["*.jpg", "*.png", "*.gif"]
         sortField: FolderListModel.Time
         sortReversed: false
         showDirs: false
@@ -75,15 +75,20 @@ Application {
                     font.pixelSize: Dims.l(6)
                     font.bold: true
                 }
-
-                IconButton {
-                    iconName: "ios-pencil-circle"
+                Rectangle {
+                    color: "transparent"
+                    width: 60
+                    height: 60
                     anchors {
                         horizontalCenter: parent.horizontalCenter
                         bottom: parent.bottom
                         bottomMargin: parent.height * 0.05
                     }
-                    onClicked: edit(fileURL)
+                    IconButton {
+                        iconName: "ios-brush-outline"
+                        anchors.fill: parent
+                        onClicked: edit(fileURL)
+                    }
                 }
             }
 
@@ -137,18 +142,34 @@ Application {
         IconButton {
             id: savebtn
             iconName: "ios-checkmark-circle-outline"
+            anchors {
+                horizontalCenter: parent.horizontalCenter
+                bottom: parent.bottom
+                bottomMargin: parent.height * 0.05
+            }
             onClicked: inEditMode = false
         }
 
         IconButton {
             id: rotateleftbtn
-            iconName: "ios-rotate-ccw-circle"
+            iconName: "ios-refresh-circle-outline"
+            transform: Scale { xScale: -1 }
+            anchors {
+                verticalCenter: parent.verticalCenter
+                left: parent.left
+                leftMargin: parent.height * 0.05 + width
+            }
             onClicked: imageToEditRotation.angle -= 90
         }
 
         IconButton {
             id: rotaterightbtn
-            iconName: "ios-rotate-cw-circle"
+            iconName: "ios-refresh-circle-outline"
+            anchors {
+                verticalCenter: parent.verticalCenter
+                right: parent.right
+                rightMargin: parent.height * 0.05
+            }
             onClicked: imageToEditRotation.angle += 90
         }
 
